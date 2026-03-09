@@ -37,11 +37,11 @@
     "build": "npm run clean && tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.build.json --noEmit",
     "test": "npm run clean && tsc -p tsconfig.test.json && node --test dist/**/*_test.js",
-    "prepack": "npm run build",
-    "prepare": "npm run build"
+  "prepack": "npm run build",
+  "prepare": "npm run build"
   },
   "dependencies": {
-    "muninn-frames-ts": "file:../muninn-frames-ts"
+    "muninn-frames-ts": "^0.1.0"
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
