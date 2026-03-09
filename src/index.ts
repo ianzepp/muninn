@@ -6,3 +6,4 @@ export type { ClientOptions, CallOptions } from "./client.js";
 export { ClientStream } from "./stream.js";
 export type { Transport, TransportFactory } from "./transport.js";
 export { WebSocketTransport } from "./transport.js";
+export { PING_INTERVAL_MS, HEARTBEAT_TIMEOUT_MS, PING_CALL } from "./ping.js";
