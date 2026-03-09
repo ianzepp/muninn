@@ -60,27 +60,15 @@ class Queue<T> {
  * The client pushes decoded response frames onto the stream's internal queue
  * as they arrive from the transport. The stream closes automatically when a
  * terminal frame arrives, or can be closed early by the caller.
- *
- * Tracks `consumed` — the number of frames the consumer has actually pulled
- * via next(). The client's PingManager reads this value on each keepalive
- * tick and reports it to the server for per-stream backpressure.
  */
 export class ClientStream implements AsyncIterable<Frame> {
   private readonly queue = new Queue<Frame>();
   private closed = false;
 
-  /** Number of frames the consumer has pulled via next(). */
-  private _consumed = 0;
-
   constructor(
     /** The original request frame that created this stream. */
     readonly request: Frame
   ) {}
-
-  /** How many frames the consumer has pulled. Read by PingManager. */
-  get consumed(): number {
-    return this._consumed;
-  }
 
   /**
    * Called by the client to deliver a response frame.
@@ -106,15 +94,8 @@ export class ClientStream implements AsyncIterable<Frame> {
     this.queue.close();
   }
 
-  async next(): Promise<IteratorResult<Frame>> {
-    const result = await this.queue.next();
-    // Increment consumed only when the consumer actually receives a frame.
-    // This count is reported to the server via keepalive pings so the server
-    // can track the gap between items sent and items consumed for backpressure.
-    if (!result.done) {
-      this._consumed++;
-    }
-    return result;
+  next(): Promise<IteratorResult<Frame>> {
+    return this.queue.next();
   }
 
   async recv(): Promise<Frame | undefined> {

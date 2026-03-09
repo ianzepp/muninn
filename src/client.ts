@@ -4,19 +4,6 @@
  * The client manages a single transport connection, sends request frames,
  * correlates response frames back to their originating streams via `parent_id`,
  * and exposes `call()` / `collect()` / `first()` conveniences.
- *
- * Ping mechanics are handled privately:
- *
- * - KEEPALIVE (client → server): Every 100ms, the client sends a ping frame
- *   per active stream reporting how many frames the consumer has pulled. The
- *   server uses this for per-stream backpressure (pause/resume based on the
- *   gap between items sent and items acked).
- *
- * - HEARTBEAT (server → client): The server periodically sends a ping frame
- *   with server_ts and seq. If no heartbeat arrives within the timeout, the
- *   client considers the server dead and closes the transport.
- *
- * The consumer never sees ping frames.
  */
 
 import {
@@ -30,7 +17,6 @@ import {
 import type { Transport, TransportFactory } from "./transport.js";
 import { WebSocketTransport } from "./transport.js";
 import { ClientStream } from "./stream.js";
-import { PingManager, isPingFrame } from "./ping.js";
 
 // ---------------------------------------------------------------------------
 // ClientOptions
@@ -60,7 +46,6 @@ export class Client {
   private transport: Transport | undefined;
   private readonly pending = new Map<string, ClientStream>();
   private receiveLoop: Promise<void> | undefined;
-  private pingManager: PingManager | undefined;
   private closed = false;
 
   private constructor(
@@ -137,11 +122,6 @@ export class Client {
   close(): void {
     if (this.closed) return;
     this.closed = true;
-
-    // Stop ping timers before closing transport to avoid sending pings
-    // on a closing/closed connection.
-    this.pingManager?.stop();
-
     this.transport?.close();
     for (const stream of this.pending.values()) {
       stream._close();
@@ -155,18 +135,6 @@ export class Client {
 
   private async open(): Promise<void> {
     this.transport = await this.factory(this.url);
-
-    // Create the ping manager. It holds a reference to the transport (for
-    // sending keepalive pings) and the pending streams map (for reading
-    // each stream's consumed count). The heartbeat timeout callback closes
-    // the transport, which ends the receive loop and cleans up everything.
-    this.pingManager = new PingManager(
-      this.transport,
-      this.pending,
-      () => this.close()
-    );
-    this.pingManager.start();
-
     this.receiveLoop = this.receive();
   }
 
@@ -181,20 +149,6 @@ export class Client {
         continue;
       }
 
-      // Filter ping frames — never deliver to consumer streams.
-      //
-      // Ping frames use call: "ping" and come in two flavors:
-      // - No parent_id: server heartbeat → update watchdog
-      // - Has parent_id: shouldn't happen inbound (client sends these),
-      //   but ignore gracefully if it does.
-      if (isPingFrame(frame)) {
-        if (frame.parent_id === undefined) {
-          this.pingManager?.onHeartbeat(frame);
-        }
-        continue;
-      }
-
-      // Regular response frame — correlate to pending stream via parent_id.
       const parentId = frame.parent_id;
       if (parentId === undefined) continue;
 
@@ -203,15 +157,12 @@ export class Client {
 
       stream._push(frame);
 
-      // Terminal frame closes the stream. Remove from pending so keepalive
-      // pings stop being sent for this stream on the next timer tick.
       if (isTerminalStatus(frame.status)) {
         this.pending.delete(parentId);
       }
     }
 
-    // Transport closed — stop pings and terminate all pending streams.
-    this.pingManager?.stop();
+    // Transport closed — terminate all pending streams
     for (const stream of this.pending.values()) {
       stream._close();
     }
