@@ -1,0 +1,35 @@
+[package]
+name = "muninn"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.90"
+description = "Umbrella facade crate for the Muninn core family"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/ianzepp/muninn-rs"
+homepage = "https://github.com/ianzepp/muninn-rs"
+documentation = "https://github.com/ianzepp/muninn-rs"
+keywords = ["frames", "kernel", "bridge", "realtime", "async"]
+categories = ["asynchronous", "network-programming"]
+
+[features]
+default = []
+frames = ["dep:muninn-frames"]
+kernel = ["dep:muninn-kernel"]
+llm = ["dep:muninn-llm"]
+bridge = ["frames", "kernel", "dep:muninn-bridge"]
+
+[dependencies]
+muninn-frames = { git = "https://github.com/ianzepp/muninn-frames-rs.git", optional = true }
+muninn-kernel = { git = "https://github.com/ianzepp/muninn-kernel-rs.git", optional = true }
+muninn-llm = { git = "https://github.com/ianzepp/muninn-llm-rs.git", optional = true }
+muninn-bridge = { git = "https://github.com/ianzepp/muninn-bridge-rs.git", optional = true }
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+collapsible_if = "allow"
+collapsible_else_if = "allow"
+wildcard_imports = "allow"
+needless_pass_by_value = "allow"
+unnecessary_map_or = "allow"
+unnecessary_result_map_or_else = "allow"
