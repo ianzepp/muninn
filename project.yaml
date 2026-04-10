@@ -1,0 +1,66 @@
+name: muninn
+description: Multi-language protocol and runtime family for Muninn frames, kernels, and client integrations.
+
+projects:
+  - name: frames-rs
+    path: protocol/frames-rs
+    type: library
+    language: rust
+    description: Rust wire frame model and protobuf codec.
+    deploy: none
+
+  - name: frames-ts
+    path: protocol/frames-ts
+    type: library
+    language: typescript
+    description: TypeScript frame model and JSON codec.
+    deploy: none
+
+  - name: frames-go
+    path: protocol/frames-go
+    type: library
+    language: go
+    description: Go frame model and JSON codec.
+    deploy: none
+
+  - name: kernel-rs
+    path: runtimes/kernel-rs
+    type: library
+    language: rust
+    description: Rust in-memory routing kernel.
+    deploy: none
+
+  - name: kernel-ts
+    path: runtimes/kernel-ts
+    type: library
+    language: typescript
+    description: TypeScript in-memory routing kernel.
+    deploy: none
+
+  - name: bridge-rs
+    path: runtimes/bridge-rs
+    type: library
+    language: rust
+    description: Rust boundary adapter between kernel and wire frames.
+    deploy: none
+
+  - name: llm-rs
+    path: runtimes/llm-rs
+    type: library
+    language: rust
+    description: LLM and room syscalls for Muninn hosts.
+    deploy: none
+
+  - name: client-ts
+    path: runtimes/client-ts
+    type: library
+    language: typescript
+    description: TypeScript transport client for Muninn frame servers.
+    deploy: none
+
+  - name: rust
+    path: meta/rust
+    type: library
+    language: rust
+    description: Umbrella facade crate for the Rust Muninn stack.
+    deploy: none
