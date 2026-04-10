@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`muninn-llm-rs` is a Rust library for projects that already use a
+`runtimes/llm-rs` is a Rust library for projects that already use a
 message/frame/event architecture and need an embedded LLM loop.
 
 This crate is:
@@ -16,7 +16,7 @@ runtime, provider-specific wrapper, or transport-specific integration layer.
 
 ## Architecture Priorities
 
-Use [PLAN_V2.md](/Users/ianzepp/github/ianzepp/muninn-llm-rs/PLAN_V2.md) as
+Use [PLAN_V2.md](/Users/ianzepp/github/ianzepp/muninn/runtimes/llm-rs/PLAN_V2.md) as
 the current architecture plan.
 
 Important current architectural rules:
@@ -87,8 +87,8 @@ asks for something narrower.
 ## Documentation Updates
 
 Update docs when behavior or contracts change:
-- [README.md](/Users/ianzepp/github/ianzepp/muninn-llm-rs/README.md) for
+- [README.md](/Users/ianzepp/github/ianzepp/muninn/runtimes/llm-rs/README.md) for
   library-facing usage or positioning changes
-- [PLAN_V2.md](/Users/ianzepp/github/ianzepp/muninn-llm-rs/PLAN_V2.md) for
+- [PLAN_V2.md](/Users/ianzepp/github/ianzepp/muninn/runtimes/llm-rs/PLAN_V2.md) for
   architecture direction changes
 - this file for repo workflow or engineering standard changes

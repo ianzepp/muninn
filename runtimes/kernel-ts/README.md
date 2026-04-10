@@ -15,20 +15,10 @@ The kernel never serializes frames. It routes native TypeScript objects through 
 npm install muninn-kernel-ts
 ```
 
-Or as a git dependency:
+Source now lives in the monorepo:
 
-```json
-"dependencies": {
-  "muninn-kernel-ts": "github:ianzepp/muninn-kernel-ts"
-}
-```
-
-Pin to a specific tag or commit rather than tracking `main`:
-
-```json
-"dependencies": {
-  "muninn-kernel-ts": "github:ianzepp/muninn-kernel-ts#v0.1.0"
-}
+```text
+https://github.com/ianzepp/muninn/tree/main/runtimes/kernel-ts
 ```
 
 ## Architecture Overview

@@ -11,25 +11,25 @@ The crate is intended to be embedded by a Muninn host process that loads config,
 
 ## Installation
 
-Add to your `Cargo.toml` as a git dependency:
+Add to your `Cargo.toml` from the monorepo:
 
 ```toml
 [dependencies]
-llm = { package = "muninn-llm", git = "https://github.com/ianzepp/muninn-llm-rs" }
+llm = { package = "muninn-llm", git = "https://github.com/ianzepp/muninn.git" }
 ```
 
 Or with the full package name:
 
 ```toml
 [dependencies]
-muninn-llm = { git = "https://github.com/ianzepp/muninn-llm-rs" }
+muninn-llm = { git = "https://github.com/ianzepp/muninn.git" }
 ```
 
 Pin to a specific tag or commit rather than tracking `main`:
 
 ```toml
 [dependencies]
-llm = { package = "muninn-llm", git = "https://github.com/ianzepp/muninn-llm-rs", tag = "v0.1.0" }
+llm = { package = "muninn-llm", git = "https://github.com/ianzepp/muninn.git", tag = "v0.1.0" }
 ```
 
 ## Architecture Overview

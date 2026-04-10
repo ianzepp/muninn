@@ -13,7 +13,7 @@ This package focuses on the shared logical frame protocol: field names, status l
 ## Installation
 
 ```bash
-go get github.com/ianzepp/muninn-frames-go
+go get github.com/ianzepp/muninn/protocol/frames-go
 ```
 
 ## Public API

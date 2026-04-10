@@ -11,25 +11,25 @@ The kernel never serializes frames. It routes native Rust structs over `tokio::s
 
 ## Installation
 
-Add to your `Cargo.toml` as a git dependency:
+Add to your `Cargo.toml` from the monorepo:
 
 ```toml
 [dependencies]
-kernel = { package = "muninn-kernel", git = "https://github.com/ianzepp/muninn-kernel.git" }
+kernel = { package = "muninn-kernel", git = "https://github.com/ianzepp/muninn.git" }
 ```
 
 Or, if you prefer to use the full package name in your `use` statements:
 
 ```toml
 [dependencies]
-muninn-kernel = { git = "https://github.com/ianzepp/muninn-kernel.git" }
+muninn-kernel = { git = "https://github.com/ianzepp/muninn.git" }
 ```
 
 Pin to a specific tag or commit rather than tracking `main`:
 
 ```toml
 [dependencies]
-kernel = { package = "muninn-kernel", git = "https://github.com/ianzepp/muninn-kernel.git", tag = "v0.1.0" }
+kernel = { package = "muninn-kernel", git = "https://github.com/ianzepp/muninn.git", tag = "v0.1.0" }
 ```
 
 ## Architecture Overview

@@ -11,25 +11,25 @@ This crate is intentionally minimal. It handles protobuf bytes and object-shaped
 
 ## Installation
 
-Add to your `Cargo.toml` as a git dependency:
+Add to your `Cargo.toml` from the monorepo:
 
 ```toml
 [dependencies]
-frames = { package = "muninn-frames", git = "https://github.com/ianzepp/muninn-frames.git" }
+frames = { package = "muninn-frames", git = "https://github.com/ianzepp/muninn.git" }
 ```
 
 Or with the full package name in `use` statements:
 
 ```toml
 [dependencies]
-muninn-frames = { git = "https://github.com/ianzepp/muninn-frames.git" }
+muninn-frames = { git = "https://github.com/ianzepp/muninn.git" }
 ```
 
 Pin to a specific tag or commit:
 
 ```toml
 [dependencies]
-frames = { package = "muninn-frames", git = "https://github.com/ianzepp/muninn-frames.git", tag = "v0.1.0" }
+frames = { package = "muninn-frames", git = "https://github.com/ianzepp/muninn.git", tag = "v0.1.0" }
 ```
 
 ## Public API

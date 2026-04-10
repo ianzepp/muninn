@@ -22,23 +22,23 @@ The implementation should be built with the following source files open as prima
 
 These define the family-level semantics that `muninn-kernel-ts` should stay aligned with:
 
-- [`muninn-kernel/src/frame.rs`](/Users/ianzepp/github/ianzepp/muninn-kernel/src/frame.rs)
+- [`runtimes/kernel-rs/src/frame.rs`](/Users/ianzepp/github/ianzepp/muninn/runtimes/kernel-rs/src/frame.rs)
   Canonical in-memory frame model, status lifecycle, `prefix()` / `verb()`, response builders, `trace` vs `data`.
-- [`muninn-kernel/src/kernel.rs`](/Users/ianzepp/github/ianzepp/muninn-kernel/src/kernel.rs)
+- [`runtimes/kernel-rs/src/kernel.rs`](/Users/ianzepp/github/ianzepp/muninn/runtimes/kernel-rs/src/kernel.rs)
   Kernel registration model, subsystem routing setup, subscriber creation, syscall registration shape.
-- [`muninn-kernel/src/pipe.rs`](/Users/ianzepp/github/ianzepp/muninn-kernel/src/pipe.rs)
+- [`runtimes/kernel-rs/src/pipe.rs`](/Users/ianzepp/github/ianzepp/muninn/runtimes/kernel-rs/src/pipe.rs)
   `Caller`, `CallStream`, correlation semantics, raw pipe subsystem behavior.
-- [`muninn-kernel/src/sender.rs`](/Users/ianzepp/github/ianzepp/muninn-kernel/src/sender.rs)
+- [`runtimes/kernel-rs/src/sender.rs`](/Users/ianzepp/github/ianzepp/muninn/runtimes/kernel-rs/src/sender.rs)
   Common response-pattern helpers and the distinction between primary stream semantics and convenience adapters.
-- [`muninn-kernel/src/backpressure.rs`](/Users/ianzepp/github/ianzepp/muninn-kernel/src/backpressure.rs)
+- [`runtimes/kernel-rs/src/backpressure.rs`](/Users/ianzepp/github/ianzepp/muninn/runtimes/kernel-rs/src/backpressure.rs)
   Subscriber/backpressure design and the expected high-level flow-control behavior.
-- [`muninn-kernel/src/error.rs`](/Users/ianzepp/github/ianzepp/muninn-kernel/src/error.rs)
+- [`runtimes/kernel-rs/src/error.rs`](/Users/ianzepp/github/ianzepp/muninn/runtimes/kernel-rs/src/error.rs)
   Structured kernel error model and error code conventions.
-- [`muninn-kernel/src/syscall.rs`](/Users/ianzepp/github/ianzepp/muninn-kernel/src/syscall.rs)
+- [`runtimes/kernel-rs/src/syscall.rs`](/Users/ianzepp/github/ianzepp/muninn/runtimes/kernel-rs/src/syscall.rs)
   Rust syscall trait shape and subsystem contract.
-- [`muninn-frames-ts/src/index.ts`](/Users/ianzepp/github/ianzepp/muninn-frames-ts/src/index.ts)
+- [`protocol/frames-ts/src/index.ts`](/Users/ianzepp/github/ianzepp/muninn/protocol/frames-ts/src/index.ts)
   TypeScript frame schema and validation surface that `muninn-kernel-ts` should either depend on or re-export cleanly.
-- [`muninn-kernel-ts/DESIGN.md`](/Users/ianzepp/github/ianzepp/muninn-kernel-ts/DESIGN.md)
+- [`runtimes/kernel-ts/DESIGN.md`](/Users/ianzepp/github/ianzepp/muninn/runtimes/kernel-ts/DESIGN.md)
   This document is itself normative for package scope and TS-specific decisions.
 
 ### Monk OS References

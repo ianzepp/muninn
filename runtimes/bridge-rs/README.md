@@ -12,25 +12,25 @@ This crate is intentionally narrow. It does not route frames, register handlers,
 
 ## Installation
 
-Add to your `Cargo.toml` as a git dependency:
+Add to your `Cargo.toml` from the monorepo:
 
 ```toml
 [dependencies]
-bridge = { package = "muninn-bridge", git = "https://github.com/ianzepp/muninn-bridge.git" }
+bridge = { package = "muninn-bridge", git = "https://github.com/ianzepp/muninn.git" }
 ```
 
 Or with the full package name in `use` statements:
 
 ```toml
 [dependencies]
-muninn-bridge = { git = "https://github.com/ianzepp/muninn-bridge.git" }
+muninn-bridge = { git = "https://github.com/ianzepp/muninn.git" }
 ```
 
 Pin to a specific tag or commit:
 
 ```toml
 [dependencies]
-bridge = { package = "muninn-bridge", git = "https://github.com/ianzepp/muninn-bridge.git", tag = "v0.1.0" }
+bridge = { package = "muninn-bridge", git = "https://github.com/ianzepp/muninn.git", tag = "v0.1.0" }
 ```
 
 ## Public API
