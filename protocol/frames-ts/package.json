@@ -1,0 +1,46 @@
+{
+  "name": "muninn-frames-ts",
+  "version": "0.1.0",
+  "description": "Shared frame model and JSON codec for Muninn TypeScript clients",
+  "license": "MIT",
+  "author": "Ian Zepp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ianzepp/muninn-frames-ts.git"
+  },
+  "homepage": "https://github.com/ianzepp/muninn-frames-ts",
+  "bugs": {
+    "url": "https://github.com/ianzepp/muninn-frames-ts/issues"
+  },
+  "keywords": [
+    "muninn",
+    "frames",
+    "realtime",
+    "protocol",
+    "websocket"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "node -e \"import('node:fs').then(({ rmSync }) => rmSync('dist', { recursive: true, force: true }))\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit",
+    "test": "npm run clean && tsc -p tsconfig.test.json && node --test dist/**/*_test.js",
+    "prepack": "npm run build",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}
