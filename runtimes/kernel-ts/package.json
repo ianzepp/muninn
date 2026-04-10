@@ -1,0 +1,49 @@
+{
+  "name": "muninn-kernel-ts",
+  "version": "0.1.0",
+  "description": "Transport-agnostic microkernel for in-memory Muninn frame routing in TypeScript",
+  "license": "MIT",
+  "author": "Ian Zepp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ianzepp/muninn-kernel-ts.git"
+  },
+  "homepage": "https://github.com/ianzepp/muninn-kernel-ts",
+  "bugs": {
+    "url": "https://github.com/ianzepp/muninn-kernel-ts/issues"
+  },
+  "keywords": [
+    "muninn",
+    "kernel",
+    "routing",
+    "frames",
+    "async"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "node -e \"import('node:fs').then(({ rmSync }) => rmSync('dist', { recursive: true, force: true }))\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit",
+    "test": "npm run clean && tsc -p tsconfig.test.json && node --test dist/**/*_test.js",
+    "test:coverage": "npm run clean && tsc -p tsconfig.test.json && node --test --experimental-test-coverage dist/**/*_test.js",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "muninn-frames-ts": "github:ianzepp/muninn-frames-ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}
