@@ -6,9 +6,9 @@ rust-version = "1.90"
 description = "Transport-agnostic microkernel for in-memory frame routing"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/ianzepp/muninn-kernel-rs"
-homepage = "https://github.com/ianzepp/muninn-kernel-rs"
-documentation = "https://github.com/ianzepp/muninn-kernel-rs"
+repository = "https://github.com/ianzepp/muninn"
+homepage = "https://github.com/ianzepp/muninn"
+documentation = "https://github.com/ianzepp/muninn/tree/main/runtimes/kernel-rs"
 keywords = ["kernel", "routing", "async", "frames", "ipc"]
 categories = ["asynchronous", "network-programming"]
 

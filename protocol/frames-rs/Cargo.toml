@@ -6,9 +6,9 @@ rust-version = "1.90"
 description = "Shared realtime frame model and protobuf codec for WebSocket transport"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/ianzepp/muninn-frames-rs"
-homepage = "https://github.com/ianzepp/muninn-frames-rs"
-documentation = "https://github.com/ianzepp/muninn-frames-rs"
+repository = "https://github.com/ianzepp/muninn"
+homepage = "https://github.com/ianzepp/muninn"
+documentation = "https://github.com/ianzepp/muninn/tree/main/protocol/frames-rs"
 keywords = ["frames", "protobuf", "websocket", "realtime", "codec"]
 categories = ["encoding", "network-programming"]
 

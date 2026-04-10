@@ -6,9 +6,9 @@ rust-version = "1.90"
 description = "Umbrella facade crate for the Muninn core family"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/ianzepp/muninn-rs"
-homepage = "https://github.com/ianzepp/muninn-rs"
-documentation = "https://github.com/ianzepp/muninn-rs"
+repository = "https://github.com/ianzepp/muninn"
+homepage = "https://github.com/ianzepp/muninn"
+documentation = "https://github.com/ianzepp/muninn/tree/main/meta/rust"
 keywords = ["frames", "kernel", "bridge", "realtime", "async"]
 categories = ["asynchronous", "network-programming"]
 
@@ -20,10 +20,10 @@ llm = ["dep:muninn-llm"]
 bridge = ["frames", "kernel", "dep:muninn-bridge"]
 
 [dependencies]
-muninn-frames = { git = "https://github.com/ianzepp/muninn-frames-rs.git", optional = true }
-muninn-kernel = { git = "https://github.com/ianzepp/muninn-kernel-rs.git", optional = true }
-muninn-llm = { git = "https://github.com/ianzepp/muninn-llm-rs.git", optional = true }
-muninn-bridge = { git = "https://github.com/ianzepp/muninn-bridge-rs.git", optional = true }
+muninn-frames = { path = "../../protocol/frames-rs", optional = true }
+muninn-kernel = { path = "../../runtimes/kernel-rs", optional = true }
+muninn-llm = { path = "../../runtimes/llm-rs", optional = true }
+muninn-bridge = { path = "../../runtimes/bridge-rs", optional = true }
 
 [lints.clippy]
 pedantic = { level = "warn", priority = -1 }

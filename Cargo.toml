@@ -1,0 +1,10 @@
+[workspace]
+members = [
+  "protocol/frames-rs",
+  "runtimes/kernel-rs",
+  "runtimes/bridge-rs",
+  "runtimes/llm-rs",
+  "meta/rust",
+]
+resolver = "3"
+

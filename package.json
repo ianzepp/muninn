@@ -1,0 +1,15 @@
+{
+  "name": "muninn",
+  "private": true,
+  "workspaces": [
+    "protocol/frames-ts",
+    "runtimes/kernel-ts",
+    "runtimes/client-ts"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "typecheck": "npm run typecheck --workspaces"
+  }
+}
+

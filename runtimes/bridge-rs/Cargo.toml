@@ -6,15 +6,15 @@ rust-version = "1.90"
 description = "Strict boundary adapter between muninn-kernel and muninn-frames"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/ianzepp/muninn-bridge-rs"
-homepage = "https://github.com/ianzepp/muninn-bridge-rs"
-documentation = "https://github.com/ianzepp/muninn-bridge-rs"
+repository = "https://github.com/ianzepp/muninn"
+homepage = "https://github.com/ianzepp/muninn"
+documentation = "https://github.com/ianzepp/muninn/tree/main/runtimes/bridge-rs"
 keywords = ["bridge", "frames", "kernel", "protobuf", "realtime"]
 categories = ["network-programming", "asynchronous"]
 
 [dependencies]
-muninn-frames = { git = "https://github.com/ianzepp/muninn-frames-rs.git" }
-muninn-kernel = { git = "https://github.com/ianzepp/muninn-kernel-rs.git" }
+muninn-frames = { path = "../../protocol/frames-rs" }
+muninn-kernel = { path = "../kernel-rs" }
 serde_json = "1"
 thiserror = "2"
 tokio = { version = "1", features = ["rt", "sync", "macros"] }

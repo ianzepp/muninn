@@ -6,11 +6,12 @@
   "author": "Ian Zepp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ianzepp/muninn-kernel-ts.git"
+    "url": "https://github.com/ianzepp/muninn.git",
+    "directory": "runtimes/kernel-ts"
   },
-  "homepage": "https://github.com/ianzepp/muninn-kernel-ts",
+  "homepage": "https://github.com/ianzepp/muninn/tree/main/runtimes/kernel-ts",
   "bugs": {
-    "url": "https://github.com/ianzepp/muninn-kernel-ts/issues"
+    "url": "https://github.com/ianzepp/muninn/issues"
   },
   "keywords": [
     "muninn",
@@ -40,7 +41,7 @@
     "prepack": "npm run build"
   },
   "dependencies": {
-    "muninn-frames-ts": "github:ianzepp/muninn-frames-ts"
+    "muninn-frames-ts": "^0.1.0"
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
