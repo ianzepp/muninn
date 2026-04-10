@@ -1,0 +1,50 @@
+{
+  "name": "muninn-client-ts",
+  "version": "0.1.0",
+  "description": "Transport-agnostic client for Muninn frame servers",
+  "license": "MIT",
+  "author": "Ian Zepp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ianzepp/muninn-client-ts.git"
+  },
+  "homepage": "https://github.com/ianzepp/muninn-client-ts",
+  "bugs": {
+    "url": "https://github.com/ianzepp/muninn-client-ts/issues"
+  },
+  "keywords": [
+    "muninn",
+    "client",
+    "realtime",
+    "protocol",
+    "websocket",
+    "frames"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "node -e \"import('node:fs').then(({ rmSync }) => rmSync('dist', { recursive: true, force: true }))\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit",
+    "test": "npm run clean && tsc -p tsconfig.test.json && node --test dist/**/*_test.js",
+  "prepack": "npm run build",
+  "prepare": "npm run build"
+  },
+  "dependencies": {
+    "muninn-frames-ts": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}
